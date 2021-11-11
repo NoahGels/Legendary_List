@@ -5,6 +5,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
+RUN cd node_modules/@next && ls && cd ../..
 
 # Rebuild the source code only when needed
 FROM node:alpine AS builder
