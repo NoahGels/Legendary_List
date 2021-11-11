@@ -5,6 +5,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
+RUN rm -r node_modules/@next/swc-linux-x64-gnu
 
 # Rebuild the source code only when needed
 FROM node:bullseye AS builder
